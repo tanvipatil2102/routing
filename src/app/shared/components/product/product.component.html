@@ -1,0 +1,15 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p class="alert alert-danger">The Product <strong>{{prodObj.pName}}</strong> has it's status 
+               <strong>{{prodObj.pStatus}} </strong>
+            </p>
+            <button mat-raised-button color="primary" 
+            routerLink="editProduct"
+            >Edit</button>
+            <button mat-raised-button color="warn" class="ml-2"
+            (click)="onRemove()"
+            >Remove</button>
+        </div>
+    </div>
+</div>

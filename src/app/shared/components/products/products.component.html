@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-2">
+            <ng-container *ngIf="getProductsData.length > 0; else noProd">
+                <mat-list role="list" *ngFor="let product of getProductsData">
+                    <mat-list-item role="listitem"
+                    [routerLink]="[product.pId]"
+                    >{{product.pName}}</mat-list-item>
+                </mat-list>    
+            </ng-container> 
+            <ng-template #noProd>
+                <p class="alert alert-info mt-3">No Product Available !!!</p>
+            </ng-template>         
+        </div>
+        <div class="col-md-2 offet-md-2 mt-3">
+            <button mat-raised-button color="primary"
+            [routerLink]="['/products', 'addProduct']"
+            >Add Product</button>
+        </div>
+    </div>
+</div>
