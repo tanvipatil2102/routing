@@ -3,6 +3,7 @@ import { Iproduct } from '../models/product';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { GetConfirmComponent } from '../components/get-confirm/get-confirm.component';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class ProductsService {
   ]
   constructor(
     private _route : Router,
-    private _matDialog : MatDialog
+    private _matDialog : MatDialog,
+    private _snackbar : SnackbarService
   ) { }
   fetchArray(){
     return this.productsArr
@@ -36,12 +38,15 @@ export class ProductsService {
   addUser(product : Iproduct){
     this.productsArr.push(product);
     this._route.navigate(['products'])
+    this._snackbar.openSnackBar('The Product Added Successfully !!!');
   }
 
   updateProduct(prodObj : Iproduct){
     let getIndex = this.productsArr.findIndex(prod => prod.pId === prodObj.pId);
     this.productsArr[getIndex] = prodObj
     this._route.navigate(['products'])
+    this._snackbar.openSnackBar('The Product Updated Successfully !!!');
+
   }
 
   removeProduct(prod : Iproduct){
